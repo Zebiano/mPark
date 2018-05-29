@@ -1,0 +1,106 @@
+<div class="container-fluid" style="text-align:center">
+    <div style="height: 15vh">
+        <div class="row">
+            <div class="col-12">
+                <img src="img/logo.png" height="80vh">
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="height:80vh;">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <div id="myCarousel" class="carousel" data-ride="carousel">
+
+                <!-- The slideshow -->
+                <div class="carousel-inner" style="height:70vh; border-radius: 25px; background-color: white; padding-top:5%">
+                    <form action="/regSave" method="POST" id="form">
+
+                        <!--PRIMEIRO-->
+                        <div class="carousel-item active" data-ride="carousel" id="carousel-item1">
+                            <div height="25vh">
+                                <input class="reg-input" type="text" id="name" placeholder="Name" maxlength="15" minlength="3" />
+                            </div>
+                            <div height="25vh">
+                                <input class="reg-input" type="email" id="email" placeholder="Email" />
+                            </div>
+                            <div height="25vh">
+                                <input class="reg-input" type="password" id="password" placeholder="Password" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                            </div>
+                            <div height="25vh">
+                                <input class="reg-input" type="password" id="passwordConfirmar" placeholder="Confirm Password" />
+                            </div>
+                            <button id="btnSkip1" class="btn my-3 bg-green txt-white btn-forma skip" type="button">Next</i></button>
+                        </div>
+
+                        <!--SEGUNDO-->
+                        <div class="carousel-item" id="carousel-item2">
+                            <div height="25vh">
+                                <input class="reg-input" type="text" id="adress" placeholder="Adress" />
+                            </div>
+                            <div height="25vh">
+                                <input class="reg-input" type="number" id="zip1" placeholder="ZIP code" style="width:32vw" maxlength="4" minlength="4" />-
+                                <input class="reg-input" type="number" id="zip2" style="width:32vw" maxlength="3" minlength="3" />
+                            </div>
+                            <div height="25vh">
+                                <input class="reg-input" type="date" id="birth" placeholder="Date of birth" />
+                            </div>
+                            <div height="25vh">
+                                <button class="btn btn-genero" id="btnFemale" type="button" style="color:pink" value="female" name="gender"><i class="fas fa-female"></i></button>
+                                <button class="btn btn-genero" id="btnMale" type="button" style="color:deepskyblue" value="male" name="gender"><i class="fas fa-male"></i></button>
+                                <input type="hidden" name="gender" id="gender">
+                            </div>
+                            <button id="btnSkip2" class="btn my-3 bg-green txt-white btn-forma skip" type="button">Next</i></button>
+
+                            <!--COMO TORNAR UM SIMBOLO EM "RADIO BUTTONS"-->
+                        </div>
+
+                        <!--TERCEIRO-->
+                        <div class="carousel-item" id="carousel-item3">
+                            <div height="25vh" class="form-groupt" style="margin-top: 5%; margin-bottom: 5%; ">
+                                <!-- input class="reg-input" type="text" name="marca" placeholder="Brand" /-->
+                                <center><select class="selectpicker form-control reg-select">
+                                <option value="" disabled selected>Brand</option>
+                                <option value="bmw">BMW</option>
+                                <option value="seat">Seat</option>
+                                <option value="porsche">Porsche</option>
+                                <option value="lamborghini">Lamborghini</option>
+                                </select></center>
+                            </div>
+                            <div height="25vh" class="form-group" style="margin-top:5%;  margin-bottom: 5%;">
+                                <!-- input class="reg-input" type="text" name="modelo" placeholder="Model" /-->
+                                <center><select class="selectmodel form-control reg-select">
+                                    <option value="" disabled selected>Model</option>
+                                </select></center>
+                            </div>
+                            <div height="25vh" class="form-group" style="margin-top: 5%; margin-bottom: 5%" >
+                                <input class="reg-input" type="text" id="matricula" name="matricula" placeholder="Number plate" />
+                            </div>
+                            <div height="25vh" class="form-group"  style="margin-top:5%;  margin-bottom: 5%;">
+                                <center><select class="selectfuel form-control reg-select">
+                                <option value="" disabled selected>Fuel type</option>
+                                <option value="gasolina">Gasolina</option>
+                                <option value="eletrico">Eletrico</option>
+                                <option value="gpl">GPL</option>
+                                <option value="gasoleo">Gasoleo</option>
+                                </select></center>
+                            </div>
+                            <!--button type="button" id="botaoteste" class="btn my-3 bg-green txt-white btn-forma">botao provisorio</button-->
+                            <button type="button" id="btnSubmit" class="btn my-3 bg-green txt-white btn-forma">Finish</button>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <br>
+                <!--Select picker-->
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators" style="margin:auto">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active" style="border-radius: 50%; width: 12px; height: 12px"></li>
+                    <li data-target="#myCarousel" data-slide-to="1" style="border-radius: 50%; width: 12px; height: 12px;"></li>
+                    <li data-target="#myCarousel" data-slide-to="2" style="border-radius: 50%; width: 12px; height: 12px;"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

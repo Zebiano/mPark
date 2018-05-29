@@ -1,0 +1,195 @@
+.bg-green {
+    background-color: #A6D785;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.txt-green {
+    color: #A6D785;
+}
+
+.txt-white {
+    color: white;
+}
+
+.login-input{
+    border-radius: 50px;
+    height:7vh;
+    width:80%;
+}
+
+.imagem {
+    border-radius: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 60%;
+    height: width;
+    max-width: 230px;
+    min-width: 200px
+}
+
+.imagemMenor {
+    border-radius: 50%;
+    margin-top: -45%;
+    margin-left: 45%;
+    width: 25%;
+    height: width;
+    max-width: 70px;
+    min-width:50px;
+}
+
+.btn-forma {
+    border-radius: 50px;
+    font-size: 5vw;
+    font-weight: bold;
+    height:30%;
+    width:80%;
+    font-size: 18px;
+}
+
+.btn-login {
+    border-radius: 50px;
+    font-size: 5vw;
+    font-weight: bold;
+    height:40%;
+    width:80%;
+    font-size: 18px;
+}
+
+#rowImg{
+    max-width: 389px;
+    min-width: 322px;
+}
+body {
+    background: url(../img/fundo.png) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
+.reg-input {
+    border-radius: 25px;
+    width: 65vw;
+    height: 8vh;
+    margin-top: 5%;
+    margin-bottom: 5%; 
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color:WhiteSmoke  	;
+}
+
+.reg-select{
+    width: 65vw;
+    border: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color:WhiteSmoke  	;
+}
+
+.img_perfil {
+    border-radius: 50%;
+    width: 15vw;
+    height: 15vw;
+}
+
+.btn-genero{
+    height:8vh; 
+    width:height;
+    margin-top: 5%; 
+    margin-bottom:5%;
+    font-size:5vh;
+    background-color:white;
+}
+#nome_perfil {
+    font-size: 18px;
+}
+
+
+#msgTxt {
+    margin-top: 30px;
+    font-size: 4vh;
+    
+}
+
+#footer {
+    height:40vh;
+}
+
+
+.fas-perfil {
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+.fas-park {
+    font-size: 2vw;
+}
+
+#reg-logo{
+    width:50%;
+}
+
+.carousel-indicators > li.active{
+    background-color: #A6D785;
+}
+
+@media screen and (max-height: 700px) {
+#msgTxt {
+    padding-top: 15%;
+    
+}
+}
+
+
+@media (min-width: 390px) {
+    .btn-forma {
+      height: 20%;
+    }
+
+.btn-forma {
+      height: 30%;
+    }
+
+    .fas-park {
+        font-size: 4vw;
+    }
+
+    #nome_perfil {
+        font-size: 25px;
+    }
+
+
+    .fas-perfil {
+
+        font-size: 50px;
+    }
+
+    #reg-logo{
+        width:35%;
+    }
+}
+
+@media (min-width: 530px) {
+
+  
+    #nome_perfil {
+        font-size: 40px;
+    }
+
+    .fas-perfil {
+
+        font-size: 70px;
+    }
+
+    #reg-logo{
+        width:25%;
+    }
+}
