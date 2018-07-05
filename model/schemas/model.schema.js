@@ -1,17 +1,17 @@
 // Schema variable
 var Schema = global.mongoose.Schema;
 
-// Modelo do vehiculo
+// Vehicle model
 var modelSchema = Schema({
-    marca: {
+    brand: {
         type: Schema.Types.ObjectId,
-        ref: 'Marca'
+        ref: 'Brand'
     },
-    nome: String
+    name: String
 });
 
 // Criar modelos
-var Model = global.mongoose.model('Modelos', modelSchema);
+var Model = global.mongoose.model('Models', modelSchema);
 
 // Exportar model
 module.exports = {

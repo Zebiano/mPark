@@ -11,36 +11,94 @@
     </div>
     <div class="row" style="height: 10vh; margin-bottom:10vh; margin-top:5%">
         <div class="col-1">
+            <i id="backMain" class="fas fa-chevron-left fas-park" style="font-size: 170%"></i>
         </div>
         <div class="col-1">
             <a>
-                    <img class="img_perfil" src="img/person1.png">
-                </a>
+                <img id="img_perfil" class="img_perfil" src="">
+            </a>
         </div>
         <div class="col-10" style="margin:auto">
-            <h3 id="nome_perfil">{{username}}</h2>
+            <h3 id="userName"></h3>
         </div>
     </div>
-    <div style="margin:auto; padding:3vh; border-radius:25%; background-color:white" >
+
+    <div id="coisaFofa" style="margin:auto; padding:3vh; border-radius:25%; background-color:white">
         <div class="row" style="height: 20vh">
-            <div class="col-6" style="margin:auto">
+            <div class="col-6" style="margin:auto" id="carEdit">
                 <i class="fas fa-car fas-perfil"></i><br>
                 <p>Change Car</p>
             </div>
-            <div class="col-6" style="margin:auto" >
+            <div class="col-6" style="margin:auto" id="emailEdit">
                 <i class="fas fa-at fas-perfil"></i>
                 <p>Change Email </p>
             </div>
         </div>
         <div class="row" style="height:20vh">
-            <div class="col-6" style="margin:auto">
+            <div class="col-6" style="margin:auto" id="passwordEdit">
                 <i class="fas fa-key fas-perfil"></i>
                 <p>Change Password</p>
             </div>
-            <div class="col-6" style="margin:auto">
+            <div class="col-6" style="margin:auto" id="signOut">
                 <i class="fas fa-sign-out-alt fas-perfil"></i>
                 <p>Logout</p>
             </div>
+        </div>
+    </div>
+
+    <div id="changeCar" style="margin:auto; padding:3vh; border-radius:25%; background-color:white; display: none;">
+        <div class="row" style="height: 40vh">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <form action="" method="POST">
+                    <div style="margin-top: 5%; margin-bottom: 5%; margin:auto">
+                        <input class="reg-input" type="text" id="matricula" name="matricula" placeholder=" Update number plate (Ex: 00-AA-00)" />
+                    </div>
+                    <div style="margin-top: 5%; margin-bottom: 5%; margin:auto">
+                        <center>
+                            <div id="targetBrandList"></div>
+                        </center>
+                    </div>
+                    <div style="margin-top:5%;  margin-bottom: 5%; margin:auto">
+                        <center>
+                            <div id="targetModelList"></div>
+                        </center>
+                    </div>
+                    <div style="margin-top:5%;  margin-bottom: 5%; margin:auto">
+                        <center>
+                            <select class="selectfuel form-control reg-select">
+                            <option value="" disabled selected> Update fuel type</option>
+                            <option value="Gasolina 95">Gasolina 95</option>
+                            <option value="Gasolina 98">Gasolina 98</option>
+                            <option value="Elétrico">Elétrico</option>
+                            <option value="Gasóleo">Gasóleo</option>
+                            <option value="GPL">GPL</option>
+                        </select>
+                        </center>
+                    </div>
+                    <button type="button" id="cancelEditCar" class="btn my-3 bg-green txt-white btn-forma" style="margin:auto; width:40%; height: 13%;  background-color: #c63333;">Cancel</button>
+                    <button type="submit" id="confirmEditCar" class="btn my-3 bg-green txt-white btn-forma" style="margin:auto; width:40%; height: 13%">Update</button>
+                </form>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+
+    <div id="changeEmail" style="margin:auto; padding:3vh; border-radius:25%; background-color:white; display: none;">
+        <div class="row" style="height: 40vh">
+            <input id="newEmail" type="email" class="reg-input" style="margin:auto" placeholder="New Email" />
+            <input id="confNewEmail" type="email" class="reg-input" style="margin:auto" placeholder="Confirm New Email" />
+            <button type="button" id="cancelEditEmail" class="btn my-3 bg-green txt-white btn-forma" style="margin:auto; width:40%; height: 13%;  background-color: #c63333;">Cancel</button>
+            <button type="button" id="confirmEditEmail" class="btn my-3 bg-green txt-white btn-forma" style="margin:auto; width:40%; height: 13%">Update</button>
+        </div>
+    </div>
+
+    <div id="changePassword" style="margin:auto; padding:3vh; border-radius:25%; background-color:white; display: none;">
+        <div class="row" style="height: 40vh">
+            <input id="newPassword" type="password" class="reg-input" style="margin:auto" placeholder="New Password" />
+            <input id="confNewPassword" type="password" class="reg-input" style="margin:auto" placeholder="Confirm New Password" />
+            <button type="button" id="cancelEditPassword" class="btn my-3 bg-green txt-white btn-forma" style="margin:auto; width:40%; height: 13%;  background-color: #c63333;">Cancel</button>
+            <button type="button" id="confirmEditPassword" class="btn my-3 bg-green txt-white btn-forma" style="margin:auto; width:40%; height: 13%">Update</button>
         </div>
     </div>
 </div>

@@ -1,74 +1,19 @@
-<div class="container-fluid" style="text-align:center">
-    <div style="height: 15vh">
-        <div class="row">
-            <div class="col-12">
-                <img src="img/logo.png" height="80vh">
-            </div>
-        </div>
-    </div>
-    <div class="row" style="height:80vh">
-        <div class="col-1"></div>
-        <div class="col-10" style="">
-            <div id="myCarousel" class="carousel">
-                <!-- The slideshow -->
-                <div class="carousel-inner" style="border-radius: 25px; background-color: white; padding-top:5%">
-                    <form action="/regSave" method="POST">
-                        <!--PRIMEIRO-->
-                        <div class="carousel-item active">
-                            <div height="25vh"> <input class="reg-input" type="text" name="name" placeholder="Name" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="email" name="email" placeholder="Email" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="password" name="password" placeholder="Password" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="password" name="password" placeholder="Confirm Password" />
-                            </div>
-                            <button class="btn my-3 bg-green txt-white btn-forma skip" type="button">Next</i></button>
-                        </div>
-
-                        <!--SEGUNDO-->
-                        <div class="carousel-item">
-                            <div height="25vh"> <input class="reg-input" type="text" name="adress" placeholder="Adress" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="#" name="cp" placeholder="Postal-code" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="date" name="idade" placeholder="Date of birth" />
-                            </div>
-                            <div height="25vh">
-                                <button class="btn btn-genero" type="button" style="color:pink"><i class="fas fa-female"></i></button>
-                                <button class="btn btn-genero" type="button" style="color:deepskyblue"><i class="fas fa-male"></i></button>
-                            </div>
-                            <button class="btn my-3 bg-green txt-white btn-forma skip" type="button">Next</i></button>
-
-                            <!--COMO TORNAR UM SIMBOLO EM "RADIO BUTTONS"-->
-                        </div>
-
-                        <!--TERCEIRO-->
-                        <div class="carousel-item">
-                            <div height="25vh"> <input class="reg-input" type="text" name="marca" placeholder="Brand" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="text" name="modelo" placeholder="Model" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="text" name="matricula" placeholder="Plate" />
-                            </div>
-                            <div height="25vh"> <input class="reg-input" type="number" name="anoCarro" placeholder="Year" />
-                            </div>
-                            <button type="submit" class="btn btn-success my-3 bg-green txt-white btn-forma" style="width:100%;">Success</button>
-                        </div>
-
-                    </form>
-                </div>
-                <br>
-                <br>
-                <!-- Indicators -->
-                <ul class="carousel-indicators" style="margin:auto">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active" style="border-radius: 50%; width: 12px; height: 12px"></li>
-                    <li data-target="#myCarousel" data-slide-to="1" style="border-radius: 50%; width: 12px; height: 12px;"></li>
-                    <li data-target="#myCarousel" data-slide-to="2" style="border-radius: 50%; width: 12px; height: 12px;"></li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-</div>
+<body onload="loadUser()">
+    <div id="target" name="target"></div>
+    <script id="template" type="x-tmpl-mustache">
+        Hello {{ name }}!;
+    </script>
+    <script>
+        function loadUser() {
+            var template = $('#template').html();
+            Mustache.parse(template); // optional, speeds up future uses
+            var rendered = Mustache.render(template, {
+                cssFiles: css,
+                targetInput: html,
+                scriptFiles: scripts
+            });
+            $('#target').html(rendered);
+        }
+    </script>
+</body>
 

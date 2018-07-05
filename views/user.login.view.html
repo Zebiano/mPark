@@ -2,26 +2,30 @@
     <div class="row" style="margin-bottom:6vh">
         <div class="col-2"></div>
         <div class="col-8" style="height:10vh">
-            <img src="img/logo.png" height="130%" >
+            <img src="img/logo.png" height="130%">
         </div>
     </div>
-    <div class="row" style="height:40vh">
-        <div class="col-12" style="margin:auto;">
-            <input type="text" class="login-input" placeholder="Email" name="" id="" style="margin-bottom:20px"><br>
-            <input type="text" class="login-input" placeholder="Palavra-Passe" name="" id="" style="margin-bottom:5px;"><br>
-            <label for=""><input type="checkbox" name="" id="">Lembrar mais tarde</label>
+    <form id="formLogin" action="/checkLogin" method="POST">
+        <div class="row" style="height:40vh">
+            <div class="col-12" style="margin:auto;">
+                <input type="text" id="userEmail" class="login-input" placeholder="Email" name="email" style="margin-bottom:20px" required><br>
+                <input type="hidden" id="wrongEmail" value="">
+                <input type="password" id="userPassword" class="login-input" placeholder="Palavra-Passe" name="password" id="" style="margin-bottom:5px;" required><br>
+                <input type="hidden" id="wrongPassword" value="">
+                <!-- label for=""><input type="checkbox" id="checkBoxRemember">Remember Me</label -->
+            </div>
         </div>
-    </div>
-    <div class="row" style="height:20vh">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <button type="button" class="btn bg-green txt-white btn-login">Confirmar</button>
+        <div class="row" style="height:20vh">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <button type="submit" id="btnSubmit" class="btn bg-green txt-white btn-login">Login!</button>
+            </div>
         </div>
-    </div>
+    </form>
     <div class="row" style="height:10vh">
         <div class="col-3"></div>
         <div class="col-6">
-            <label for="">Não tem conta? <a href="url">Registe-se</a></label>
+            <label for="">Don't have an account? <a href="/signup">Signup!</a></label>
         </div>
     </div>
 </div>

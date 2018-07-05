@@ -1,0 +1,22 @@
+<div class="container-fluid" style=" text-align: center; background-color: white; min-height: 100vh">
+    <div class="row bg-green" style="height: 13vh; padding-top:3vh">
+        <div class="col-1">
+            <i id="backMain"class="fas fa-chevron-left fas-park" style="font-size: 170%"></i>
+            <i id="backParkChart"class="fas fa-chevron-left fas-park" style="font-size: 170%; display: none"></i>
+        </div>
+        <div class="col-9">
+            <input type="text" id="parkChartSearch" style="border-radius: 50px; height:7vh; width:100%" list="json-datalist" placeholder="Park Name">
+            <datalist id="json-datalist"></datalist> </div>
+        <div class="col-1">
+            <i onclick="selectPark()" class="fas fa-search fas-park" style="font-size: 170%"></i>
+        </div>
+    </div>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div" style="width: 100vw"></div>
+    <div id="extra" style="display: none">
+        <hr style="border: solid 2px #A6D785">
+        <div id="chart_div2" style="width: 100vw"></div>
+        <hr style="border: solid 2px #A6D785">
+        <div id="chart_div3" style="width: 100vw"></div>
+    </div>
+</div>

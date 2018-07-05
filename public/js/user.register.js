@@ -1,255 +1,278 @@
+// Array para guardar dados
+var arrayBrands = [];
+var arrayModels = [];
+
+// Objetos
+var newUser = {};
+var newVehicle = {};
+
+// Variaveis
+var name, email, password, address, zip, birth, gender, plate, brand, model, fuelType;
+
+// Load brands and models to arrays
+getBrands();
+getModels();
+
+// When document ready
 $(document).ready(function() {
-    // 1-REGISTO
-    // Validações para registo de utilizadores
-
-    // Array para guardar dados
-    var registo = [];
-
-
-
     // 1.1 - PRIMEIRA PAGINA
     // Botão para passar para a próxima fase
     $("#btnSkip1").click(function(e) {
         e.preventDefault();
         // Obter valores de cada input
-        var name = $("#name").val(); // nome
-        var email = $("#email").val(); // email 
-        var pass = $("#password").val(); // palavra passe   
+        name = $("#name").val(); // nome
+        email = $("#email").val(); // email 
+        password = $("#password").val(); // palavra passe   
         var passC = $("#passwordConfirmar").val(); // confirmação da palavra passe
 
-        console.log("Nome: " + name + ";")
+        /*console.log("Nome: " + name + ";")
         console.log("Email: " + email + ";")
-        console.log("Password: " + pass + ";")
-        console.log("Confirmação da password: " + passC + ";")
+        console.log("Password: " + password + ";")
+        console.log("Confirmação da password: " + passC + ";")*/
 
         // Validar preenchimento dos campos
-        if (name != "" && email != "" && pass != "" && passC != "") {
-            if (pass == passC) {
-                // Se tudo estiver preenchido E as palavras passe forem iguais, passa a próxima página
+        if (name != "" && email != "" && password != "" && passC != "") {
+            if (password == passC) {
+                // Se tudo estiver preenchido E as palavras passe forem iguais, grava os dados e passa a próxima página
+                newUser.name = name;
+                newUser.email = email;
+                newUser.password = password;
+
+                // Passar pagina
                 $("#carousel-item2").show();
                 $("#carousel-item1").hide();
                 $("#carousel-item3").hide();
-
-                // Guarda dados no array
-                registo.push(name, email, pass);
-                console.log("Resisto: " + registo)
             }
             else {
-                // Erro
                 alert("Make sure the passwords match, please!")
             }
         }
         else {
-            // Erro
             alert("Fill in all form fields, please!");
         };
     });
 
     // 1.2 - SEGUNDA PAGINA
-
-    var gender = undefined;
-
+    gender = undefined;
     // Escolher o genero
     $('#btnFemale').click(function(e) {
         e.preventDefault();
         gender = "female";
-        console.log(gender);
+        //console.log(gender);
         $('#gender').val(gender);
     });
     $('#btnMale').click(function(e) {
         e.preventDefault();
         gender = "male";
-        console.log(gender);
+        //console.log(gender);
         $('#gender').val(gender);
     });
-
 
     // Botão para passar para a próxima fase
     $("#btnSkip2").click(function(e) {
         e.preventDefault();
         // Obter valores de cada input
-        var morada = $("#adress").val(); // morada
+        address = $("#adress").val(); // address
         var zip1 = $("#zip1").val(); // primeira parte do codigo postal XXXX - 111 
-        var zip2 = $("#zip2").val(); // segunda parte do codigo postal   111 - XXX
-        var birth = $("#birth").val(); // data de nascimento
+        var zip2 = $("#zip2").val(); // segunda parte do codigo postal  1111 - XXX
+        birth = $("#birth").val(); // data de nascimento
 
-        console.log("Código postal: " + zip1 + "-" + zip2 + ";")
+        /*console.log("Código postal: " + zip1 + "-" + zip2 + ";")
         console.log("Data de nascimento: " + birth + ";")
-        console.log("Genero: " + gender + ";")
+        console.log("Genero: " + gender + ";")*/
 
         // Validar preenchimento dos campos
-        if (zip1 != "" && zip2 != "" && birth != "") {
+        if (zip1 != "" && zip2 != "" && birth != "" && address != "") {
             // ZIP no formato correto 4 + 3 numeros
             if (zip1.length == 4 && zip2.length == 3) {
 
-                var cp = zip1 + "-" + zip2
-                console.log("codigo postaaaaal: " + cp)
+                zip = zip1 + "-" + zip2
+                //console.log("codigo postaaaaal: " + zip)
                 // Verifica se o genero esta selecionado
                 if (gender != undefined) {
-                    $("#carousel-item3").show();
-                    $("#carousel-item1").hide();
-                    $("#carousel-item2").hide();
+                    // Obtem a data de hoje 18 anos atras
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth() + 1; //January is 0!
+                    var yyyy = today.getFullYear() - 18;
 
-                    // Guarda dados no array
-                    registo.push(morada, cp, birth, gender);
-                    console.log("Resisto: " + registo)
+                    var myDate = yyyy + "-" + mm + "-" + dd
+                    if (birth > myDate) {
+                        alert("You have to be over 18 to signup!")
+                    }
+                    else {
+                        // Depois das verificacoes grava no newUser
+                        newUser.address = address;
+                        newUser.postalCode = zip;
+                        newUser.dateOfBirth = birth;
+                        newUser.gender = gender;
+
+                        // E muda de pagina
+                        $("#carousel-item3").show();
+                        $("#carousel-item1").hide();
+                        $("#carousel-item2").hide();
+                    }
+
                 }
                 else {
-                    // Erro
                     alert("Select your gender, please!")
                 }
             }
             else {
-                // Erro
                 alert("Make sure your ZIP code is correct, please!");
             }
         }
         else {
-            // Erro
             alert("Fill in all form fields, please!");
         }
     });
 
-    // VERIFICAR O GENERO #### AINDA EM CONSTRUÇÃO ############################################
-
-    $("#btnSubmit").click(function(e) {
-        e.preventDefault();
-        $("#form").submit();
-    });
-    // #######################################################################################
-
-
     // 1.3 - TERCEIRA PAGINA
-    // Select da marca - quando o valor do select muda(change) da trigger a função
-    $(".selectpicker").change(function(e) {
-        e.preventDefault();
-        var marca = $(".selectpicker").val();
-        console.log("change funciona")
-        console.log("marca: " + marca)
-
-        // Marca selecionada é BMW
-        if (marca == "bmw") {
-            // Depois de saber a marca selecionada, adiciona os modelos dessa marca ao select seguinte
-            $(".selectmodel").append("<option class='bmw' value='berlina'>Berlina</option><option class='bmw' value='cabrio'>Cabrio</option><option class='bmw' value='coupe'>Coupé</option>");
-
-            // E remove os modelos que estavam anteriormente
-            $(".selectmodel option[class='seat']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='porsche']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='lamborghini']").each(function() {
-                $(this).remove();
-            });
-        }
-        // Marca selecionada é Seat
-        else if (marca == "seat") {
-            // Depois de saber a marca selecionada, adiciona os modelos dessa marca ao select seguinte
-            $(".selectmodel").append("<option class='seat' value='ibiza'>Ibiza</option><option class='seat' value='mii'>Mii</option><option class='seat' value='ateca'>Ateca</option>");
-
-            // E remove os modelos que estavam anteriormente
-            $(".selectmodel option[class='bmw']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='porsche']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='lamborghini']").each(function() {
-                $(this).remove();
-            });
-        }
-        // Marca selecionada é Porsche
-        else if (marca == "porsche") {
-            // Depois de saber a marca selecionada, adiciona os modelos dessa marca ao select seguinte
-            $(".selectmodel").append("<option class='porsche' value='carrera'>Carrera</option><option class='porsche' value='boxster'>Boxster</option><option class='porsche' value='macan'>Macan</option>");
-
-            // E remove os modelos que estavam anteriormente
-            $(".selectmodel option[class='seat']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='bmw']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='lamborghini']").each(function() {
-                $(this).remove();
-            });
-        }
-        // Marca selecionada é Lamborghini
-        else if (marca == "lamborghini") {
-            // Depois de saber a marca selecionada, adiciona os modelos dessa marca ao select seguinte
-            $(".selectmodel").append("<option class='lamborghini' value='urus'>Urus</option><option class='lamborghini' value='huracan'>Huracán</option><option class='lamborghini'value='aventador'>Aventador</option>");
-
-            // E remove os modelos que estavam anteriormente
-            $(".selectmodel option[class='seat']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='porsche']").each(function() {
-                $(this).remove();
-            });
-            $(".selectmodel option[class='bmw']").each(function() {
-                $(this).remove();
-            });
-        };
-    });
-
     // "Botao" submit que verifica a validade de cada campo
     // Neste momento #botaoteste é um botão provisorio para questões de testes. Este código e para o botão SUBMIT. Só faz SUBMIT se tiver tudo ok! 
     // Ainda temos de explorar essa parte
     $("#btnSubmit").click(function(e) {
         e.preventDefault();
+
         //Obter valores de cada input
-        var matricula = $("#matricula").val();
-        var marca = $(".selectpicker").val();
-        var modelo = $(".selectmodel").val();
-        var combustivel = $(".selectfuel").val();
+        plate = $("#matricula").val();
+        brand = $(".selectpicker").val();
+        model = $(".selectmodel").val();
+        fuelType = $(".selectfuel").val();
 
-        // Marca selecionada
-        if (marca != null) {
-            console.log("A marca do carro é: " + marca)
-            // Modelo Selecionado
-            if (modelo != null) {
-                console.log("O modelo do carro é: " + modelo)
-                // Verifica se a matrícula está no formato correto
-                // Valor retornado é "true" ou "false"
-                var matriculaTest1 = /^\d{2} ?- ?[A-Z]{2} ?- ?[A-Z]{2}$/.test(matricula); // 00-AA-AA
-                var matriculaTest2 = /^[A-Z]{2} ?- ?\d{2} ?- ?[A-Z]{2}$/.test(matricula); // AA-00-AA
-                var matriculaTest3 = /^[A-Z]{2} ?- ?[A-Z]{2} ?- ?\d{2}$/.test(matricula); // AA-AA-00
-
-                console.log("test1= " + matriculaTest1);
-                console.log("test2= " + matriculaTest2);
-                console.log("test3= " + matriculaTest3);
-
-                //Se a matrícula estiver preenchida tem de estar num formato correto
-                if (matricula != "" && (matriculaTest1 == true || matriculaTest2 == true || matriculaTest3 == true)) {
-                    console.log("A matrícula, " + matricula + " é válida")
-                    // Combustivel selecionado
-                    if (combustivel != null) {
-                        console.log("O combustivel do carro é: " + combustivel)
-                        registo.push(matricula, marca, modelo, combustivel);
-                        console.log("Resisto: " + registo)
-
-                        registo.submit();
-                    }
-                    else {
-                        // Erro
-                        alert("Make sure you select the type of fuel your car uses, please!")
-                    }
-                }
-                else {
-                    // Erro
-                    alert("Make sure your number plate is correct, please!")
-                };
+        if (brand == null && model == null && plate == '' && fuelType == null) {
+            var option = confirm("Are you sure you want to register without a Vehicle?");
+            if (option == true) {
+                // Gravar User na base de dados
+                submitUser();
             }
             else {
-                // Erro
-                alert("Make sure you select your car model, please!")
+                alert("Make sure you select your car model, please!");
             }
         }
-        else {
-            // Mensagem de sucesso, sem registar carro
-            alert("You have successfully registered on mPark! Don't forget you have to register your car to have full access to all the functionalities! Thank you!")
+        else if (brand == null || model == null) {
+            alert("Make sure you select your car model, please!");
         }
+        else if (brand != null && model != null && fuelType == null) {
+            alert("Make sure you select the type of fuel your car uses, please!");
+        }
+        else if (brand != null && model != null && fuelType != null) {
+            var verifyPlate = /[A-Z][A-Z]-[0-9][0-9]-[0-9][0-9]|[0-9][0-9]-[0-9][0-9]-[A-Z][A-Z]|[0-9][0-9]-[A-Z][A-Z]-[0-9][0-9]/.test(plate); // AA-00-00 or 00-00-AA or 00-AA-00
+            if (verifyPlate == false) {
+                alert("Make sure your number plate is correct, please!\nNote: Every letter must be capitalised.");
+            }
+            else {
+                // Save to newVehicle
+                newVehicle.nPlate = plate;
+                newVehicle.model = model;
+                newVehicle.fuelType = fuelType;
 
+                // Gravar User na base de dados
+                submitUser();
+            }
+        }
     });
 });
+
+// -- Functions -- \\
+// Gravar User na base de dados
+function submitUser() {
+    $.ajax({
+        type: 'POST',
+        url: '/regSave',
+        data: {
+            newUser: newUser
+        },
+        success: function(userId) {
+            // Gravar vehiculo
+            if ($.isEmptyObject(newVehicle) == false) {
+                submitVehicle(userId);
+            }
+            else {
+                // Mensagem de sucesso, sem registar carro
+                alert("You have successfully registered on mPark! Don't forget you have to register your car to have full access to all the functionalities! Thank you!");
+                window.location.replace('/login');
+            }
+        }
+    });
+}
+
+// Gravar Veiculo na base de dados
+function submitVehicle(userId) {
+    newVehicle.user = userId;
+    //console.log(newVehicle);
+
+    $.ajax({
+        type: 'POST',
+        url: '/saveVehicle',
+        data: {
+            newVehicle: newVehicle
+        },
+        success: function(data) {
+            // Mensagem de sucesso, sem registar carro
+            alert("You have successfully registered on mPark with a Vehicle! Thank you!");
+            window.location.replace('/login');
+        }
+    });
+};
+
+// Select das Brands
+function listBrands() {
+    var result = '';
+    result += '<select onchange="listModels()" id="selectBrand" class="selectpicker form-control reg-select"><option value="" disabled selected>Brand</option>'
+    for (var i = 0; i < arrayBrands.length; i++) {
+        result += '<option value="' + arrayBrands[i]._id + '">' + arrayBrands[i].name + '</option>';
+    }
+    result += '</select>'
+    $('#targetBrandList').html(result);
+}
+
+// Select dos Models
+function listModels() {
+    var result = '';
+    result += '<select class="selectmodel form-control reg-select"><option value="" disabled selected>Model</option>'
+    for (var i = 0; i < arrayModels.length; i++) {
+        if ($("#selectBrand").val() == arrayModels[i].brand) {
+            result += '<option value="' + arrayModels[i]._id + '">' + arrayModels[i].name + '</option>';
+        }
+    }
+    result += '</select>'
+    $('#targetModelList').html(result);
+}
+
+// Get Brands and save to array
+function getBrands() {
+    console.log("Loading Brands...");
+
+    $.ajax({
+        type: 'POST',
+        url: '/admin/getListBrand',
+        success: function(data) {
+            arrayBrands = data;
+            console.log("Brands loaded!");
+            listBrands();
+        },
+        error: function(req, status, err) {
+            console.log("Brands couldn't be loaded!");
+            console.log("Error: " + err);
+        }
+    });
+};
+
+// Get Models and save to array
+function getModels() {
+    console.log("Loading Models...");
+
+    $.ajax({
+        type: 'POST',
+        url: '/admin/getListModel',
+        success: function(data) {
+            arrayModels = data;
+            console.log("Models loaded!");
+        },
+        error: function(req, status, err) {
+            console.log("Models couldn't be loaded!");
+            console.log("Error: " + err);
+        }
+    });
+};

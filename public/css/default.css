@@ -62,6 +62,18 @@
     max-width: 389px;
     min-width: 322px;
 }
+
+#parkSituation{
+    border-radius: 25px;
+    border: #d62a2a ;
+    background-color: #d62a2a;
+    position: fixed;
+    left: 10px;
+    top: 60px;
+    width: 25%;
+    color:white;
+    height: 5%;
+}
 body {
     background: url(../img/fundo.png) no-repeat;
     -webkit-background-size: cover;
@@ -129,9 +141,6 @@ body {
     font-size: 30px;
 }
 
-.fas-park {
-    font-size: 2vw;
-}
 
 #reg-logo{
     width:50%;
@@ -158,9 +167,6 @@ body {
       height: 30%;
     }
 
-    .fas-park {
-        font-size: 4vw;
-    }
 
     #nome_perfil {
         font-size: 25px;

@@ -3,16 +3,23 @@ var Schema = global.mongoose.Schema;
 
 // Veiculo
 var vehicleSchema = new Schema({
-    matricula: String,
-    modelo: {
+    user: {
         type: Schema.Types.ObjectId,
-        ref: 'Modelo'
+        ref: 'User'
     },
-    combustivel: String
+    nPlate: {
+        type: String,
+        unique: true
+    },
+    model: {
+        type: Schema.Types.ObjectId,
+        ref: 'Model'
+    },
+    fuelType: String
 });
 
 // Criar modelos
-var Vehicle = global.mongoose.model('Veiculos', vehicleSchema);
+var Vehicle = global.mongoose.model('Vehicles', vehicleSchema);
 
 // Exportar model
 module.exports = {
